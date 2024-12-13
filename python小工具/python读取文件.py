@@ -27,3 +27,32 @@ def read_csv_to_dict(filePath = ""):
             line = f.readline().strip()
     # 返回结果
     return result
+
+def read_json_file(file_path):
+    """
+    读取json文件
+    :param file_path:
+    :return:
+    """
+    import json
+    with open(file_path, 'r', encoding='utf-8') as f:
+        json_data = f.read()
+        dict_data = json.loads(json_data)
+        f.close()
+    return dict_data
+
+def dict_to_json_file(dict_data, file_path):
+    """
+    把dict数据转化为json格式，写入json文件
+    :param dict_data:
+    :param file_path:
+    :return:
+    """
+    import json
+    # 把dict数据转化为json格式
+    json_data = json.dumps(dict_data)
+    # 写入json文件
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(json_data)
+        f.flush()
+        f.close()
